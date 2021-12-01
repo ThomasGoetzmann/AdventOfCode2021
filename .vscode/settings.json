@@ -1,0 +1,16 @@
+{
+    "files.exclude": {
+        "**/.ionide": true,
+        "**/bin": true,
+        "**/obj": true,
+        "**/.vs": true,
+    },
+    "spellright.language": [
+        "en",
+        "fr"
+    ],
+    "spellright.documentTypes": [
+        "latex",
+        "plaintext"
+    ]
+}
