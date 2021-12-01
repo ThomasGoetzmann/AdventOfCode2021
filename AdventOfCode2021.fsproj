@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <Compile Include="sources/Year2021Day1.fs" />
+    <Compile Include="sources/Year2021Day2.fs" />
     <Compile Include="sources/Program.fs" />
   </ItemGroup>
 
