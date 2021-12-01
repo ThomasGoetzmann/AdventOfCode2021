@@ -6,11 +6,10 @@
         "**/.vs": true,
     },
     "spellright.language": [
-        "en",
-        "fr"
+        "en"
     ],
     "spellright.documentTypes": [
         "latex",
-        "plaintext"
+        "markdown"
     ]
 }
