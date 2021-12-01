@@ -4,6 +4,8 @@
         "**/bin": true,
         "**/obj": true,
         "**/.vs": true,
+        "**/workspace.code-workspace": true,
+        "**/LICENSE": true,
     },
     "spellright.language": [
         "en"
