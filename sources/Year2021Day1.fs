@@ -11,3 +11,11 @@ let SolveDay1Part1 =
     |> Seq.pairwise
     |> Seq.filter (fun (x,y) -> x < y)
     |> Seq.length
+
+let SolveDay1Part2 = 
+    inputs
+    |> Seq.windowed 3
+    |> Seq.pairwise
+    |> Seq.filter (fun (x,y) -> Seq.sum x < Seq.sum y )
+    |> Seq.length
+    
