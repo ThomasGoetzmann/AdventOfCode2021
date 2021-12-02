@@ -17,3 +17,7 @@ dotnet run
 # Run tests
 dotnet test
 ```
+
+Or [use a VSCode Dev container](https://code.visualstudio.com/docs/remote/containers).
+You only need: Docker, VSCode and [VSCode Remote-Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+![VSCode DevContainer](docs/VSCode_DevContainer.gif)
