@@ -15,6 +15,7 @@ type Instruction =
 type Position = {
     Horizontal: int
     Depth: int
+    Aim : int
 }
 
 let parse line = 
@@ -26,16 +27,28 @@ let parse line =
     | "down" -> Down(int m.Groups["number"].Value)
     | "up" -> Up(int m.Groups["number"].Value)
     | _ -> failwith "Invalid input"
-
-let MoveFrom initialPosition instructions =
+    
+let Part1MovesFrom initialPosition instructions =
     let rec Move p instructions = 
         match instructions with
         | [] -> p
         | head :: tail -> 
             match head with
-            | Forward x-> Move {p with Horizontal= p.Horizontal + x} tail
             | Up x -> Move {p with Depth = p.Depth - x} tail
             | Down x -> Move {p with Depth = p.Depth + x} tail
+            | Forward x-> Move {p with Horizontal= p.Horizontal + x} tail
+    
+    Move initialPosition instructions
+
+let Part2MovesFrom initialPosition instructions =
+    let rec Move p instructions = 
+        match instructions with
+        | [] -> p
+        | head :: tail  ->
+            match head with
+            | Up x -> Move {p with Aim= p.Aim - x} tail
+            | Down x -> Move {p with Aim= p.Aim + x} tail
+            | Forward x -> Move {p with Horizontal= p.Horizontal + x; Depth = p.Depth + (p.Aim * x)} tail
     
     Move initialPosition instructions
 
@@ -45,8 +58,11 @@ let Multiply p =
 let SolveDay2Part1 = 
     inputs
     |> List.map parse
-    |> MoveFrom {Horizontal= 0; Depth =0}
+    |> Part1MovesFrom {Horizontal= 0; Depth =0; Aim=0}
     |> Multiply
 
 let SolveDay2Part2 = 
-    -1
+    inputs
+    |> List.map parse
+    |> Part2MovesFrom { Horizontal=0; Depth=0; Aim=0}
+    |> Multiply
