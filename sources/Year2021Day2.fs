@@ -1,7 +1,6 @@
 module Year2021Day2
 
 open System.IO
-open System.Text.RegularExpressions
 
 let inputs =
     File.ReadAllLines("inputs/year2021day2.txt")
@@ -17,14 +16,15 @@ type Position =
       Depth: int
       Aim: int }
 
-let parse line =
-    let pattern = @"(?'direction'.*) (?'number'\d*)"
-    let m = Regex.Match(line, pattern)
+let parse (line:string) =
+    let lineSplit = line.Split(' ')
+    let direction = lineSplit.[0]
+    let value = (int)lineSplit.[1]
 
-    match m.Groups["direction"].Value with
-    | "up" -> Up (int m.Groups["number"].Value)
-    | "down" -> Down (int m.Groups["number"].Value)
-    | "forward" -> Forward (int m.Groups["number"].Value)
+    match direction with
+    | "up" -> Up value
+    | "down" -> Down value
+    | "forward" -> Forward value
     | _ -> failwith "Invalid input"
 
 let Part1Rules instruction p =
