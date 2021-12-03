@@ -25,8 +25,8 @@ let ``Day 2 Part 2: Mutiply final horizontal and depth (using aim)`` () =
 
 [<Fact>]
 let ``Day 3 Part 1:`` () = 
-    SolveDay3Part1 |> should equal 0
+    SolveDay3Part1 |> should equal 4001724
 
 [<Fact>]
 let ``Day 3 Part 1: `` () = 
-    SolveDay3Part2 |> should equal 0
+    SolveDay3Part2 |> should equal 587895

@@ -16,10 +16,10 @@ type Position =
       Depth: int
       Aim: int }
 
-let parse (line:string) =
+let parse (line: string) =
     let lineSplit = line.Split(' ')
     let direction = lineSplit.[0]
-    let value = (int)lineSplit.[1]
+    let value = (int) lineSplit.[1]
 
     match direction with
     | "up" -> Up value
@@ -46,13 +46,12 @@ let RunWith rules instructions =
     let rec Move position instructions =
         match instructions with
         | [] -> position
-        | head :: tail -> Move (rules head position) tail
+        | head :: tail -> Move(rules head position) tail
 
     let initialPosition = { Horizontal = 0; Depth = 0; Aim = 0 }
     Move initialPosition instructions
 
-let Multiply p = 
-    p.Horizontal * p.Depth
+let Multiply p = p.Horizontal * p.Depth
 
 let SolveDay2Part1 =
     inputs
