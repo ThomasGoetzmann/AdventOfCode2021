@@ -51,16 +51,17 @@ let RunWith rules instructions =
     let initialPosition = { Horizontal = 0; Depth = 0; Aim = 0 }
     Move initialPosition instructions
 
-let Multiply p = p.Horizontal * p.Depth
+let CalculateAnswer p = 
+    p.Horizontal * p.Depth
 
 let SolveDay2Part1 =
     inputs
     |> List.map parse
     |> RunWith Part1Rules
-    |> Multiply
+    |> CalculateAnswer
 
 let SolveDay2Part2 =
     inputs
     |> List.map parse
     |> RunWith Part2Rules
-    |> Multiply
+    |> CalculateAnswer
