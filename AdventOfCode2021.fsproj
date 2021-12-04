@@ -9,9 +9,7 @@
     <Content Include="inputs/*.txt"> 
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Compile Include="sources/Year2021Day1.fs" />
-    <Compile Include="sources/Year2021Day2.fs" />
-    <Compile Include="sources/Year2021Day3.fs" />
+    <Compile Include="sources/Year2021*.fs" />
     <Compile Include="sources/Program.fs" />
   </ItemGroup>
 
