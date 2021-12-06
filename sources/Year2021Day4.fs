@@ -45,7 +45,7 @@ let toBoard (input:string) =
     
     { Squares = squares }
 
-let rec extractBoards acc (inputs:string list) = 
+let rec extractBoards acc inputs = 
         match inputs with
         | [] -> acc |> List.rev
         | head::tail -> extractBoards ((toBoard head)::acc) tail
@@ -56,14 +56,31 @@ let parse (input:string) =
     let boards = extractBoards [] (splits.[1..] |> List.ofArray)
     numbers, boards
 
-let rec playBingo (numbers,boards: Board list) = 
+let rec playBingo (numbers,boards) = 
     match numbers with 
-    | [] -> None
+    | [] -> failwith "Shouldn't happen"
     | number :: tail -> 
         let updatedBoards = boards |> List.map (fun board -> markNumber number board)
-        match (updatedBoards |> List.tryFind (fun b -> b.isWinning)) with
-        | Some b -> Some (b, number)
+        let winningBoard = updatedBoards |> List.tryFind (fun b -> b.isWinning)
+
+        match winningBoard with
+        | Some board -> (board, number)
         | None -> playBingo (tail,updatedBoards)
+
+let rec playBingoToLose (numbers, boards) =
+    match numbers with
+    | [] -> failwith "not normal"
+    | number :: tail  ->
+        let updatedBoards = boards |> List.map (fun board -> markNumber number board)
+        let loosingBoards = updatedBoards |> List.filter(fun board -> not board.isWinning)
+        
+        match loosingBoards with
+        | _::_ -> playBingoToLose (tail, loosingBoards)
+        | _ -> 
+            match (updatedBoards |> List.rev) with
+            | [] -> failwith "Not normal"
+            | [x] -> (x, number)
+            | a::b -> (a, number)
 
 let calculatePoints (board,number) =
     let sum = 
@@ -74,17 +91,15 @@ let calculatePoints (board,number) =
     
     let points = sum * number
     points
-    
 
 let SolveDay4Part1 = 
-    let winningBoard = 
-        inputs
-        |> parse //parse inputs
-        |> playBingo
-    
-    match winningBoard with
-    | Some board -> board |> calculatePoints
-    | None -> -1
+    inputs
+    |> parse //parse inputs
+    |> playBingo
+    |> calculatePoints
 
 let SolveDay4Part2 = 
-    -1
+    inputs
+    |> parse
+    |> playBingoToLose
+    |> calculatePoints

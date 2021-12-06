@@ -38,4 +38,4 @@ let ``Day 4 Part 1: Points for first winning grid`` () =
 
 [<Fact>]
 let ``Day 4 Part 1: Points for last winning grid `` () = 
-    SolveDay4Part2 |> should equal -1
+    SolveDay4Part2 |> should equal 5586
