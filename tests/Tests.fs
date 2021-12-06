@@ -7,6 +7,8 @@ open Year2021Day1
 open Year2021Day2
 open Year2021Day3
 open Year2021Day4
+open Year2021Day5
+open Year2021Day6
 
 [<Fact>]
 let ``Day 1 Part 1: Number of times a depth measurement increases`` () = 
@@ -39,3 +41,11 @@ let ``Day 4 Part 1: Points for first winning grid`` () =
 [<Fact>]
 let ``Day 4 Part 1: Points for last winning grid `` () = 
     SolveDay4Part2 |> should equal 5586
+
+[<Fact>]
+let ``Day 6 Part 1: Number of fishes after 80 days`` () = 
+    SolveDay6Part1 |> should equal 377263L
+
+[<Fact>]
+let ``Day 6 Part 1: Number of fishes after 256 days`` () = 
+    SolveDay6Part2 |> should equal 1695929023803L
