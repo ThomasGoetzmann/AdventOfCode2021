@@ -19,7 +19,7 @@ printfn "Day 4 part 1 solution is %A" SolveDay4Part1
 printfn "Day 4 part 2 solution is %A" SolveDay4Part2
 
 printfn "Day 5 part 1 solution is %A" SolveDay5Part1
-printfn "Day 5 part 1 solution is %A" SolveDay5Part1
+printfn "Day 5 part 2 solution is %A" SolveDay5Part2
 
-printfn "Day 6 part 2 solution is %A" SolveDay6Part2
+printfn "Day 6 part 1 solution is %A" SolveDay6Part1
 printfn "Day 6 part 2 solution is %A" SolveDay6Part2
